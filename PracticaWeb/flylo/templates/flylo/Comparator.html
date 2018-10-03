@@ -1,0 +1,75 @@
+
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'flylo/style.css' %}" />
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+var dataestore = [];
+var glob = [];
+var id;
+function myFunc(ajaxReturn) {
+    {% for flight in flights %}
+        if ({{flight.id}}== id ){
+            $.each(dataestore, function(i, data) {
+                $.each(data.json.results, function(j, obj) {
+                        if(obj.location_departure  == '{{flight.location_departure}}' && obj.location_arrival == '{{flight.location_arrival}}' && obj.estimated_time_arrival.substring(0, 10) =='{{flight.strDate}}'.substring(0, 10)){
+                            glob.push({data: obj, ip: data.ip});
+                        }
+                    });
+                });
+                glob.sort(function(a, b){
+                    if (a.price < b.price) return -1;
+                    if (b.price < a.price) return 1;
+                    return 0;
+                });
+                $.each(glob, function(i, obj) {
+                    tct = $("<p></p>").text("IP: " + obj.ip + " | Flight number: " + obj.data.flight_number + " | Departure time: " + obj.data.estimated_time_departure + " | Arrival time: " + obj.data.estimated_time_arrival + " | Price: " + obj.data.price);
+                    $("#div_show").append(tct);
+                });
+        }
+    {% endfor %}
+
+}
+function myFailure(){
+
+}
+function gogo(){
+    $.when( {% for ip in ips %}$.ajax({url : 'http://'+'{{ip}}'+':8080/api/flights/',type : 'GET',dataType : 'json',success: function (json) {
+dataestore.push({ip: '{{ip}}', json: json});} }),{% endfor %}).then( myFunc, myFailure );
+
+}
+function compare() {
+    id = $( "#combo" ).val();
+    if ( !(id == "")) {
+        var show = $("#div_show");
+        show.html("");
+        dataestore = [];
+        glob = [];
+        gogo();
+    }
+
+}
+</script>
+</head>
+<body>
+<div id  = "div" class="middle" align="center">
+ <h2 id = "title"> Select a flight to comparate</h2>
+<BR>
+ <BR>
+{% if flights %}
+    <select id = "combo" >
+     <option value="">Select a flight</option>
+        {% for flight in flights %}
+            <option value="{{flight.id}}">{{flight}}</option>
+    {% endfor %}
+    </select>
+    <p></p>
+    <p></p>
+ <input id = "butt" type = "button" value = "Compare" onclick = "compare();">
+    <div id="div_show"></div>
+{% else %}
+    <p>No Flights are available.</p>
+{% endif %}
+</div>
+</body>

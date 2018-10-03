@@ -1,0 +1,55 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'flylo/style.css' %}" />
+
+<div class="middle" align = "center">
+    <header>
+    {% if notlog %}
+    <a href="{% url 'login' %}">Log in</a> /
+    <a href="{% url 'register' %}">Register</a>
+    {% else %}
+    <p> <a href="{% url 'logout' %}">Log out</a></p>
+    {% endif %}
+</header>
+    <h2 align = "center"> Check in</h2>
+<form action="{% url 'flylo:postCheckIn'%}" method="post">
+
+    {% csrf_token %}
+Name: <input type= "text"  name="name" id="name"  />
+    <BR>
+    <BR>
+SurName: <input type= "text"  name="surname" id="surname"  />
+    <BR>
+    <BR>
+    <p align = "center"> Select a seat id for each seat</p>
+    <BR>
+    <div class = "inliner" >
+    {% for item in items %}
+        <div class = "inliner" >
+        <p> seats category: {{item.category}}</p>
+        {% if item.category == 'e'  %}
+            {% for s in item.nseats %}
+                <select name = "combo{{item.id}}X{{s}}" id = "combo{{item.id}}X{{s}}" required>
+                     <option value="">Select a seat</option>
+                        {%for idseat in economicIds %}
+                            <option value="{{idseat}}">{{idseat}} </option>
+                        {%endfor %}
+                </select>
+            {%endfor %}
+        {% else %}
+            {% for s in item.nseats %}
+                <select id = "combo{{item.id}}X{{s}}" name = "combo{{item.id}}X{{s}}"  required>
+                    <option value="">Select a seat</option>
+                    {%for idseat in bussinesIds %}
+                        <option value="{{idseat}}">{{idseat}}</option>
+                    {%endfor %}
+                </select>
+            {%endfor %}
+        {% endif %}
+        </div>
+    {% endfor %}
+          </div>
+            <BR>
+            <BR>
+            <input type="submit" value="finish checkIn" />
+</form>
+    </div>

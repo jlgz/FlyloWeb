@@ -1,0 +1,29 @@
+ {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'flylo/style.css' %}" />
+ <div class="middle">
+   <header>
+    {% if notlog %}
+    <a href="{% url 'login' %}">Log in</a> /
+    <a href="{% url 'register' %}">Register</a>
+    {% else %}
+    <p>{{userh}}/ <a href="{% url 'logout' %}">Log out</a></p>
+    {% endif %}
+</header>
+      <h2>Detail flight</h2>
+     <BR>
+<p>Flight {{flight.flight_number}}</p>
+<p></p>
+<ul>
+<li>Departure: {{flight.location_departure}}</li>
+<li>Arrival: {{flight.location_arrival}}</li>
+<li>Time to departure: {{flight.estimated_time_departure}}</li>
+<li>Time to arrival: {{flight.estimated_time_arrival}}</li>
+<li>Airlines:<ul>
+    {%for airline in flight.airline.all %}
+        <li>{{airline.airline_code}}</li>
+    {% endfor %}
+</ul></li>
+<li>Aircraft: {{flight.aircraft.aircraft_number}}</li>
+<li>Status: {{flight.status}}</li>
+</ul>
+ </div>

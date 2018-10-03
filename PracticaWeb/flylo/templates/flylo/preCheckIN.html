@@ -1,0 +1,30 @@
+ {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'flylo/style.css' %}" />
+ <div class="middle" align="center">
+   <header>
+    {% if notlog %}
+    <a href="{% url 'login' %}">Log in/</a>
+    <a href="{% url 'register' %}">register</a>
+    {% else %}
+    <p> <a href="{% url 'logout' %}">Log out</a></p>
+    {% endif %}
+</header>
+{% if flights %}
+    <h1> Check In Flights</h1>
+    <select id = "combo" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+     <option value="">Select a bought flight</option>
+        {% for flight in flights %}
+            <option value="{% url 'checkIn' flight.id %}">Flight number: {{flight.flight_number}}     Departure: {{flight.location_departure}}   Arrival: {{flight.location_arrival}} </option>
+        {% endfor %}
+        </select>
+{% else %}
+    <p>No Flights are available.</p>
+{% endif %}
+    </div>
+     <script>
+    var x;
+    window.onload = onPageLoad();
+    function onPageLoad(){
+       document.getElementById("combo").value = "";
+    }
+    </script>

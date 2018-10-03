@@ -1,0 +1,193 @@
+[
+  {
+    "model": "flylo.Airline",
+    "pk" : 1,
+    "airline_code" : "AUA",
+    "offer_categories" : 1
+  },
+  {
+    "model": "flylo.Airline",
+    "pk" :2,
+    "airline_code" : "DAL",
+    "offer_categories" : 1
+  },
+  {
+    "model": "flylo.Airline",
+    "pk" :3,
+    "airline_code" : "VLG",
+    "offer_categories" : 1
+  },
+  {
+    "model": "flylo.Aircraft",
+    "aircraft_number" : "A320",
+    "seats_bussines" :  30,
+    "seats_economic" : 20
+  },
+  {
+    "model": "flylo.Aircraft",
+    "aircraft_number" : "A320",
+    "seats_bussines" :  30,
+    "seats_economic" : 20
+  },
+  {
+    "model": "flylo.Aircraft",
+    "aircraft_number" : "B764",
+    "seats_bussines" :  30,
+    "seats_economic" : 20
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 1,
+    "fields": {
+      "flight_number": "VLG1053",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "BCN",
+      "location_arrival" : "MAD",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 11,
+    "fields": {
+      "flight_number": "VLG1054",
+      "estimated_time_departure": "2017-04-28 21:40+0200",
+      "estimated_time_arrival" :"2017-05-28 22:45+0200",
+      "location_departure" : "MAD",
+      "location_arrival" : "BCN",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "DELAYED"
+    }
+  },
+   {
+   "model": "flylo.Flight",
+    "pk": 2,
+    "fields": {
+      "flight_number": "DAL477",
+      "estimated_time_departure":"2017-03-29 12:10+0200",
+      "estimated_time_arrival" : "2017-03-29 14:08-0400",
+      "location_departure" : "BCN",
+      "location_arrival" : "JFK",
+      "airline" : [2],
+      "aircraft" : "B764",
+      "status" : "DELAYED"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 3,
+    "fields": {
+      "flight_number": "VLG1054",
+      "estimated_time_departure": "2017-03-28 14:00+0200",
+      "estimated_time_arrival" :"2017-03-28 17:30+0200",
+      "location_departure" : "ALC",
+      "location_arrival" : "BCN",
+      "airline" : [3],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 4,
+    "fields": {
+      "flight_number": "VLG1055",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "AMS",
+      "location_arrival" : "MAD",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 5,
+    "fields": {
+      "flight_number": "VLG1056",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "BKK",
+      "location_arrival" : "HKG",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 6,
+    "fields": {
+      "flight_number": "VLG1057",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "IBZ",
+      "location_arrival" : "MAD",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 7,
+    "fields": {
+      "flight_number": "VLG1058",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "PAR",
+      "location_arrival" : "PRG",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 8,
+    "fields": {
+      "flight_number": "VLG1059",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "VLC",
+      "location_arrival" : "ZAZ",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 9,
+    "fields": {
+      "flight_number": "VLG1070",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "NAP",
+      "location_arrival" : "BCN",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  },
+  {
+    "model": "flylo.Flight",
+    "pk": 10,
+    "fields": {
+      "flight_number": "VLG1071",
+      "estimated_time_departure": "2017-03-28 21:40+0200",
+      "estimated_time_arrival" :"2017-03-28 22:45+0200",
+      "location_departure" : "BUE",
+      "location_arrival" : "MAD",
+      "airline" : [1],
+      "aircraft" : "A320",
+      "status" : "FLYING"
+    }
+  }
+
+]

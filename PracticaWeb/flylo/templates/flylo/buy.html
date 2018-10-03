@@ -1,0 +1,27 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'flylo/style.css' %}" />
+<body>
+<div class="middle" align="center">
+<header>
+    {% if notlog %}
+    <a href="{% url 'login' %}">Log in</a> /
+    <a href="{% url 'register' %}">Register</a>
+    {% else %}
+    <p><a href="{% url 'logout' %}">Log out</a></p>
+    {% endif %}
+</header>
+<h1>Items in your shopping cart: </h1>
+<ul>
+{% for item in items %}
+    	<li>Flight number: <a href="{% url 'detailFlight' departure item.flight.flight_number %}">{{item.flight.flight_number}}</a>       Departure: {{item.flight.location_departure}}       Arrival: {{item.flight.location_arrival}}      Category:  {{item.category}} Seats:  {{item.seats}}  </li>
+{% endfor %}
+</ul>
+<form action="{% url 'flylo:postBuy' %}" method="get">
+    <BR>
+    <p> User Money : {{money}}</p>
+    <BR>
+
+<input type="submit" value="BuyAll">
+</form>
+</body>
+</div>
